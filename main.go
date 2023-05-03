@@ -1,10 +1,12 @@
 /*
 Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-
 */
 package main
 
-import "oma/cmd"
+import (
+	"oma/cmd"
+	_ "oma/cmd/wsl"
+)
 
 func main() {
 	cmd.Execute()
