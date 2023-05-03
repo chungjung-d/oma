@@ -1,9 +1,9 @@
 package wsl
 
 import (
-	"bufio"
 	"bytes"
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
 
@@ -17,13 +17,13 @@ var pbcopyCmd = &cobra.Command{
 	example: echo "hello" | oma wsl pbcopy`,
 	Run: func(cmd *cobra.Command, args []string) {
 
-		reader := bufio.NewReader(os.Stdin)
-		text, err := reader.ReadString('\n')
+		textBytes, err := io.ReadAll(os.Stdin)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error reading from stdin:", err)
 			os.Exit(1)
 		}
 
+		text := string(textBytes)
 		copyToClipboard(text)
 	},
 }
