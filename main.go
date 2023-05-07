@@ -5,7 +5,6 @@ package main
 
 import (
 	"oma/cmd"
-	_ "oma/cmd/git"
 	_ "oma/cmd/wsl"
 )
 
